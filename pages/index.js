@@ -15,7 +15,7 @@ export default function Home() {
         <News />
       </div>
 
-      <div className="lg:col-span-2 lg:col-start-5  lg:row-span-12 pt-5 lg:pt-0 text-center">
+      <div className="lg:col-span-2 lg:col-start-5 lg:row-span-12 pt-5 lg:pt-0 text-center">
         <Standings />
       </div>
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 const Nav = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -15,7 +16,7 @@ const Nav = () => {
         <input
           type="checkbox"
           className="absolute w-16 h-16 top-0 left-0 z-20 opacity-0 cursor-pointer lg:hidden"
-          checked={isChecked}
+          defaultChecked={isChecked}
           onClick={() => {
             setIsChecked(!isChecked);
           }}
@@ -61,8 +62,12 @@ const Nav = () => {
                 LightsOutF1
               </h1> */}
               <ul className="flex flex-col lg:flex-row  lg:justify-around lg:w-4/12 mb-5 lg:mb-0">
-                <li>Home</li>
-                <li>Predict</li>
+                <Link href="/">
+                  <li>Home</li>
+                </Link>
+                <Link href="/predict">
+                  <li>Predict</li>
+                </Link>
                 <li>News</li>
               </ul>
               <ul className="flex flex-col lg:flex-row lg:w-3/12 lg:justify-around">
