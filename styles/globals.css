@@ -19,14 +19,35 @@ html {
   .nav-line {
     @apply w-full h-px bg-white transition-all duration-300;
   }
+
+  .nav-list {
+    @apply flex flex-col lg:flex-row  mb-5 lg:mb-0;
+  }
+
+  .nav-list > li {
+    @apply py-5 lg:py-0;
+  }
+
+  .news-list > li {
+    @apply p-5;
+  }
+
+  .alt-list > li:nth-child(odd),
+  .alt-list > tbody > tr:nth-child(odd) {
+    @apply bg-black;
+  }
 }
 
 @layer base {
   button {
-    @apply mx-auto p-2 rounded-lg border-0 border-opacity-0 transform transition-all hover:scale-110 hover:border-opacity-100 bg-racingGreen;
+    @apply mx-auto p-2 rounded-lg border-0 border-opacity-0 transform transition-all hover:scale-110 hover:border-opacity-100 bg-racingGreen z-0 relative;
   }
 
   h1 {
     @apply text-2xl text-center;
+  }
+
+  a {
+    @apply cursor-pointer;
   }
 }

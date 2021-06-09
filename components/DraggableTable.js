@@ -24,7 +24,7 @@ const DraggableTable = ({ data }) => {
       <Droppable droppableId="data">
         {(provided) => (
           <ul
-            className="data w-11/12 mx-auto mt-5"
+            className="data mt-5"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
@@ -33,19 +33,19 @@ const DraggableTable = ({ data }) => {
                 <Draggable key={id} draggableId={id} index={index}>
                   {(provided, snapshot) => (
                     <li
-                      className={`text-center bg-black flex w-full justify-around my-2 ${
+                      className={`text-center bg-black flex flex-col lg:flex-row w-full justify-around my-2 ${
                         snapshot.isDragging && "border border-white"
                       }`}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <p className="w-1/12">
+                      <p className="lg:w-1/12 hidden lg:block">
                         <i className="fas fa-grip-lines"></i>
                       </p>
-                      <p className="w-1/12">{index + 1}</p>
-                      <p className="w-8/12">{name}</p>
-                      <p className="w-2/12">{team}</p>
+                      <p className="lg:w-1/12">{index + 1}</p>
+                      <p className="lg:w-8/12">{name}</p>
+                      <p className="lg:w-2/12">{team}</p>
                     </li>
                   )}
                 </Draggable>

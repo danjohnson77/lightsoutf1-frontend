@@ -24,8 +24,13 @@ const predict = () => {
     },
   ];
   return (
-    <div className="flex flex-col bg-offBlack items-center pt-5">
-      <h2 className="pt-5">PREDICT THE MONACO GRAND PRIX - 23 MAY 2021</h2>
+    <div className="flex flex-col bg-offBlack items-center text-center px-5">
+      <div className="flex flex-col">
+        <h2 className="pt-5 ">PREDICT THE MONACO GRAND PRIX</h2>
+        <p className="hidden lg:block">-</p>
+        <h3>23 MAY 2021</h3>
+      </div>
+
       <div className="flex justify-between w-full pt-5">
         <p>User: Bob775</p>
         <p>Points: 302</p>

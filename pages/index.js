@@ -7,7 +7,7 @@ import UserPredict from "../components/UserPredict";
 export default function Home() {
   return (
     <div className="flex flex-col justify-center lg:grid lg:grid-cols-6 lg:grid-rows-12 lg:gap-4">
-      <div className="lg:col-span-full lg:row-span-1 pt-5 lg:py-0">
+      <div className="lg:col-span-full lg:row-span-1 pt-5 lg:pt-0">
         <Countdown />
       </div>
 

@@ -3,15 +3,20 @@ import Link from "next/link";
 
 const Nav = () => {
   const [isChecked, setIsChecked] = useState(false);
+
+  const handleClick = () => {
+    isChecked && setIsChecked(false);
+  };
   return (
     //   menu wrap
     <nav
       className={`${
         !isChecked &&
         "bg-gradient-to-t from-black to-racingGreen lg:bg-transparent"
-      } w-screen h-16 flex justify-end items-center sticky top-0 font-heading`}
+      } w-screen h-16 flex justify-center lg:justify-center items-center sticky top-0 font-heading z-10`}
+      onClick={handleClick}
     >
-      <h1 className={`lg:hidden ${isChecked && "hidden"} p-5`}>LightsOutF1</h1>
+      <h1>LightsOutF1</h1>
       <div className="fixed top-0 left-2 z-10 w-screen">
         <input
           type="checkbox"
@@ -54,25 +59,29 @@ const Nav = () => {
             } transition-all duration-300 opacity-100 ease-in-out`}
           >
             <div
-              className={`text-center max-w-full lg:w-full lg:max-w-6xl lg:flex lg:flex-row lg:justify-between lg:items-center max-h-screen ${
+              className={`text-center max-w-full  max-h-screen 
+              
+              lg:w-full lg:max-w-6xl lg:px-10 lg:flex lg:flex-row lg:justify-between lg:items-center ${
                 isChecked ? "opacity-100" : "opacity-0 lg:opacity-100"
               } transition-opacity duration-500 ease-in-out`}
             >
-              {/* <h1 className={`lg:visible lg:w-3/12 ${isChecked && "hidden"}`}>
-                LightsOutF1
-              </h1> */}
-              <ul className="flex flex-col lg:flex-row  lg:justify-around lg:w-4/12 mb-5 lg:mb-0">
-                <Link href="/">
-                  <li>Home</li>
-                </Link>
-                <Link href="/predict">
-                  <li>Predict</li>
-                </Link>
-                <li>News</li>
+              {/* <h1 className={`lg:visible`}>LightsOutF1</h1> */}
+              <ul className="nav-list">
+                <li className="lg:mr-10" onClick={handleClick}>
+                  <Link href="/">Home</Link>
+                </li>
+
+                <li className="lg:mr-10" onClick={handleClick}>
+                  <Link href="/predict">Predict</Link>
+                </li>
+
+                <li onClick={handleClick}>News</li>
               </ul>
-              <ul className="flex flex-col lg:flex-row lg:w-3/12 lg:justify-around">
-                <li>Sign Up</li>
-                <li>Log In</li>
+              <ul className="nav-list">
+                <li onClick={handleClick}>Sign Up</li>
+                <li className="lg:ml-10" onClick={handleClick}>
+                  Log In
+                </li>
               </ul>
             </div>
           </div>

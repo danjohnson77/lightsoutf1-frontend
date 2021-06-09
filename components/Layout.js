@@ -17,7 +17,9 @@ const Layout = ({ children }) => {
         />
       </Head>
       <Nav />
-      <main className="w-11/12 max-w-6xl mx-auto font-heading">{children}</main>
+      <main className="lg:max-w-6xl lg:px-10 px-5 font-heading">
+        {children}
+      </main>
       {/* <Footer /> */}
     </>
   );
