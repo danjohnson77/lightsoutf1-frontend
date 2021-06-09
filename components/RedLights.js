@@ -1,13 +1,20 @@
-import React from "react";
+import { useEffect } from "react";
+import { gsap } from "gsap";
 
-const RedLights = () => {
+const RedLights = ({ type }) => {
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+    tl.to(`.${type}`, { opacity: 1, stagger: 0.6, duration: 1 });
+    tl.to(`.${type}`, { opacity: 0, delay: 2 });
+  }, []);
+
   return (
-    <div className="flex justify-between">
-      <span className="w-3 h-3 rounded-full bg-red-700"></span>
-      <span className="w-3 h-3 rounded-full bg-red-700 "></span>
-      <span className="w-3 h-3 rounded-full bg-red-700"></span>
-      <span className="w-3 h-3 rounded-full bg-red-700"></span>
-      <span className="w-3 h-3 rounded-full bg-red-700"></span>
+    <div className="flex justify-between w-full">
+      <span className={`red-light ${type}`}></span>
+      <span className={`red-light ${type}`}></span>
+      <span className={`red-light ${type}`}></span>
+      <span className={`red-light ${type}`}></span>
+      <span className={`red-light ${type}`}></span>
     </div>
   );
 };

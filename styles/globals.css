@@ -36,6 +36,10 @@ html {
   .alt-list > tbody > tr:nth-child(odd) {
     @apply bg-black;
   }
+
+  .red-light {
+    @apply w-4 h-4 rounded-full bg-red-700 opacity-0;
+  }
 }
 
 @layer base {

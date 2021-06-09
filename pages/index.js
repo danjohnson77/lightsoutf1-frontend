@@ -4,7 +4,7 @@ import Standings from "../components/Standings";
 import TopPredictors from "../components/TopPredictors";
 import UserPredict from "../components/UserPredict";
 
-export default function Home() {
+export default function Home({ standings }) {
   return (
     <div className="flex flex-col justify-center lg:grid lg:grid-cols-6 lg:grid-rows-12 lg:gap-4">
       <div className="lg:col-span-full lg:row-span-1 pt-5 lg:pt-0">
@@ -29,3 +29,18 @@ export default function Home() {
     </div>
   );
 }
+
+// export async function getServerSideProps(context) {
+//   const standingsRes = await fetch(`http://localhost:3000/api/standings`);
+//   const standings = await standingsRes.json();
+
+//   if (!standings) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: { standings }, // will be passed to the page component as props
+//   };
+// }

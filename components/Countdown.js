@@ -7,7 +7,7 @@ const Countdown = () => {
       <span>LIGHTS OUT IN:</span>
       <div className="flex flex-col py-5 lg:py-0">
         <p className="mb-2 text-xl ">01:22:55:27</p>
-        <RedLights />
+        <RedLights type="countdown-light" />
       </div>
       <span>HUNGARIAN GRAND PRIX</span>
     </div>
