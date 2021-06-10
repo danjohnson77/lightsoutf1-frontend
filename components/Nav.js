@@ -16,7 +16,7 @@ const Nav = () => {
       } w-screen h-16 flex justify-center lg:justify-center items-center sticky top-0 font-heading z-10`}
       onClick={handleClick}
     >
-      <h1>LightsOutF1</h1>
+      <h1 className={`lg:hidden`}>LightsOutF1</h1>
       <div className="fixed top-0 left-2 z-10 w-screen">
         <input
           type="checkbox"
@@ -65,7 +65,7 @@ const Nav = () => {
                 isChecked ? "opacity-100" : "opacity-0 lg:opacity-100"
               } transition-opacity duration-500 ease-in-out`}
             >
-              {/* <h1 className={`lg:visible`}>LightsOutF1</h1> */}
+              <h1 className={`lg:visible`}>LightsOutF1</h1>
               <ul className="nav-list">
                 <li className="lg:mr-10" onClick={handleClick}>
                   <Link href="/">Home</Link>

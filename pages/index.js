@@ -4,14 +4,14 @@ import Standings from "../components/Standings";
 import TopPredictors from "../components/TopPredictors";
 import UserPredict from "../components/UserPredict";
 
-export default function Home({ standings }) {
+export default function Home({ countdown }) {
   return (
     <div className="flex flex-col justify-center lg:grid lg:grid-cols-6 lg:grid-rows-12 lg:gap-4">
       <div className="lg:col-span-full lg:row-span-1 pt-5 lg:pt-0">
-        <Countdown />
+        <Countdown race={countdown} />
       </div>
 
-      <div className="lg:col-span-4 lg:row-span-5  pt-5 lg:pt-0">
+      <div className="lg:col-span-4 lg:row-span-4  pt-5 lg:pt-0">
         <News />
       </div>
 
@@ -30,17 +30,17 @@ export default function Home({ standings }) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const standingsRes = await fetch(`http://localhost:3000/api/standings`);
-//   const standings = await standingsRes.json();
+export async function getServerSideProps(context) {
+  const countdownRes = await fetch(`http://localhost:3000/api/countdown`);
+  const countdown = await countdownRes.json();
 
-//   if (!standings) {
-//     return {
-//       notFound: true,
-//     };
-//   }
+  if (!countdown) {
+    return {
+      notFound: true,
+    };
+  }
 
-//   return {
-//     props: { standings }, // will be passed to the page component as props
-//   };
-// }
+  return {
+    props: { countdown }, // will be passed to the page component as props
+  };
+}

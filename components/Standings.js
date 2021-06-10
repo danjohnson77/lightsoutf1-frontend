@@ -61,7 +61,7 @@ const Standings = () => {
                   <option
                     key={index}
                     value={year}
-                    selected={state && state.season === year}
+                    defaultValue={state && state.season === year}
                   >
                     {year}
                   </option>

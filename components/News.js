@@ -2,7 +2,7 @@ const News = () => {
   return (
     <>
       <h1>LATEST NEWS</h1>
-      <section className="w-full font-secondary">
+      <section className="w-full font-secondary ">
         <div className="p-5 flex flex-col bg-offBlack">
           <h2 className="text-3xl mb-2">VETTEL TO SIGN WITH MERCEDES</h2>
           <p>
