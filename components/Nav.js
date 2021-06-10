@@ -13,7 +13,7 @@ const Nav = () => {
       className={`${
         !isChecked &&
         "bg-gradient-to-t from-black to-racingGreen lg:bg-transparent"
-      } w-screen h-16 flex justify-center lg:justify-center items-center sticky top-0 font-heading z-10`}
+      } w-full h-16 flex justify-center lg:justify-center items-center sticky top-0 font-heading z-10`}
       onClick={handleClick}
     >
       <h1 className={`lg:hidden`}>LightsOutF1</h1>

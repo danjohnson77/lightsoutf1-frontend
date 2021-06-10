@@ -3,8 +3,6 @@ import CountdownClock from "./CountdownClock";
 import RedLights from "./RedLights";
 
 const Countdown = ({ race }) => {
-  console.log("time", race);
-
   const {
     nextRace: { name },
     timeTillRace,
