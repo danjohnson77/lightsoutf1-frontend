@@ -11,19 +11,20 @@ export default function Home({ countdown, news }) {
         <Countdown race={countdown} />
       </div>
       <div className="flex flex-col justify-center lg:grid lg:grid-cols-6 lg:grid-rows-2 lg:gap-4">
-        <div className="lg:col-span-4 pt-5 lg:pt-0 lg:row-span-2">
+        <div className="lg:col-span-4 pt-10 lg:pt-0 lg:row-span-2">
           <News data={news} />
         </div>
 
-        <div className="lg:col-span-2 lg:col-start-5  pt-5 lg:pt-0 text-center">
+        <div className="lg:col-span-2 lg:col-start-5  pt-10 lg:pt-0 text-center">
           <Standings />
         </div>
 
-        <div className="lg:col-span-2 lg:col-start-5 pt-5 lg:pt-0  ">
+        <div className="lg:col-span-2 pt-10 lg:pt-0 lg:row-span-1 lg:col-start-5 lg:row-start-2">
+          <div className="mb-5">
+            <UserPredict />
+          </div>
           <TopPredictors />
         </div>
-
-        <div className="lg:col-span-1 pt-5 lg:pt-0 lg:row-span-6"></div>
       </div>
     </>
   );

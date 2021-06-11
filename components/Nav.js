@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 const Nav = () => {
   const [isChecked, setIsChecked] = useState(false);
+
+  const [session, loading] = useSession();
+  console.log(session);
 
   const handleClick = () => {
     isChecked && setIsChecked(false);
@@ -78,10 +82,26 @@ const Nav = () => {
                 <li onClick={handleClick}>News</li>
               </ul>
               <ul className="nav-list">
-                <li onClick={handleClick}>Sign Up</li>
-                <li className="lg:ml-10" onClick={handleClick}>
-                  Log In
-                </li>
+                {session ? (
+                  <>
+                    <li>
+                      <span>
+                        <i className="fas fa-user pr-2"></i>
+                      </span>
+                      {session.user.name}
+                    </li>
+                    <li className="lg:ml-10" onClick={() => signOut()}>
+                      Log Out
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li onClick={handleClick}>Sign Up</li>
+                    <li className="lg:ml-10" onClick={() => signIn()}>
+                      Log In
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>

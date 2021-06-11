@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 
-const RedLights = ({ type, count = 5 }) => {
+const RedLights = ({ type }) => {
   useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
     tl.to(`.${type}`, { opacity: 1, stagger: 0.6, duration: 1 });
     tl.to(`.${type}`, { opacity: 0, delay: 2 });
   }, []);

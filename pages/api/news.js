@@ -50,7 +50,6 @@ const sortStories = (parsed) => {
     source.map((story) => {
       //console.log(story);
       story.item.map((s) => {
-        // console.log(s);
         let current = {
           title: s.title[0].toString(),
           link: s.link[0].toString(),

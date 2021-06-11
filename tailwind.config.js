@@ -43,5 +43,5 @@ module.exports = {
   variants: {
     extend: { backgroundColor: ["odd"] },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
