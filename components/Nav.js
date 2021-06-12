@@ -96,7 +96,9 @@ const Nav = () => {
                   </>
                 ) : (
                   <>
-                    <li onClick={handleClick}>Sign Up</li>
+                    <li onClick={handleClick}>
+                      <Link href="/signup">Sign Up</Link>
+                    </li>
                     <li className="lg:ml-10" onClick={() => signIn()}>
                       Log In
                     </li>
