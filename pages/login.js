@@ -13,7 +13,7 @@ const login = ({ csrfToken }) => {
         <form
           method="post"
           action="/api/auth/callback/credentials"
-          className="flex flex-col justify-center w-full"
+          className="flex flex-col justify-center w-full items-center"
         >
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <label>

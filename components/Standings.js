@@ -71,7 +71,7 @@ const Standings = () => {
             <select
               name="type"
               id="type"
-              className="bg-transparent"
+              className="bg-transparent w-full"
               onChange={handleChange}
             >
               <option value="Driver">DRIVERS</option>

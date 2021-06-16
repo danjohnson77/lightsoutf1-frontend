@@ -6,7 +6,6 @@ const Nav = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const [session, loading] = useSession();
-  console.log(session);
 
   const handleClick = () => {
     isChecked && setIsChecked(false);

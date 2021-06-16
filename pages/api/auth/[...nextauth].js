@@ -3,6 +3,9 @@ import Providers from "next-auth/providers";
 import axios from "axios";
 
 export default NextAuth({
+  pages: {
+    verifyRequest: "/verify",
+  },
   events: {
     async error(message) {
       console.log("NextAuth Error: ", message);

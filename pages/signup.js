@@ -1,31 +1,54 @@
 import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../components/Input";
 
 const signup = () => {
   const { register, handleSubmit, getValues, formState } = useForm();
 
-  const onSubmit = async (data) => {
-    const result = await axios.post("http://localhost:3000/api/auth/register", {
-      name: data.name,
-      email: data.email,
-      password: data.password,
-    });
+  const [error, setError] = useState(null);
 
-    console.log("result", result.data);
+  const onSubmit = async (data) => {
+    const { name, email, password } = data;
+    try {
+      const result = await axios.post(
+        "http://localhost:3000/api/auth/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+
+      result.data.user && sendEmail(result.data.user);
+    } catch (error) {
+      setError(error.response.data ? error.response.data : error);
+    }
+  };
+
+  const sendEmail = async ({ email, verifyToken, id }) => {
+    try {
+      const emailRes = await axios.post("http://localhost:3000/api/email", {
+        email,
+        verifyToken,
+        id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="mb-5">Sign Up</h1>
-      <section>
+      <section className="w-8/12 mx-auto">
+        {error && <div className="bg-red-500 p-2 text-center">{error}</div>}
         <form
           className="flex flex-col justify-center w-full"
           onSubmit={handleSubmit(onSubmit)}
         >
           <Input
             register={register}
-            handleSubmit={handleSubmit}
             formState={formState}
             getValues={getValues}
             label="name"
@@ -37,7 +60,6 @@ const signup = () => {
           />
           <Input
             register={register}
-            handleSubmit={handleSubmit}
             formState={formState}
             confirmField={true}
             getValues={getValues}
@@ -57,7 +79,6 @@ const signup = () => {
 
           <Input
             register={register}
-            handleSubmit={handleSubmit}
             formState={formState}
             confirmField={true}
             getValues={getValues}

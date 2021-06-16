@@ -8,6 +8,8 @@ export default async function registerAPI(req, res) {
 
     res.status(200).json(result.data);
   } catch (error) {
-    console.log(error);
+    const { data, status } = error.response;
+    res.status(status).send(data);
+    console.log(data);
   }
 }

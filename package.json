@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.4",
     "@tailwindcss/forms": "^0.3.3",
     "axios": "^0.21.1",
     "gsap": "^3.6.1",
