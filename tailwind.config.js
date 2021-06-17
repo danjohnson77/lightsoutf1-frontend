@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     rotate: {
@@ -45,3 +45,5 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms")],
 };
+
+// purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"]

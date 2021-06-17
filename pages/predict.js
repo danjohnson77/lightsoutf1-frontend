@@ -6,18 +6,22 @@ import DraggableTable from "../components/DraggableTable";
 const predict = ({ drivers, race }) => {
   const [list, setList] = useState(drivers);
   const [initialList, setInitialList] = useState(drivers);
+  const [tiebreaker, setTiebreaker] = useState({});
+  const [tiebreakerError, setTiebreakerError] = useState(null);
 
   const [session, loading] = useSession();
-  console.log(drivers, race);
 
   const handleSave = async () => {
     if (!session) {
       return "Please log in";
     }
+    const keys = Object.keys(tiebreaker);
+
     const saved = await axios.post(`http://localhost:3000/api/predict`, {
       user: session.user,
       raceId: race.id,
       list: list.map((l) => l.id),
+      tiebreaker,
     });
 
     console.log("saved", saved.data);
@@ -25,6 +29,17 @@ const predict = ({ drivers, race }) => {
 
   const handleReset = () => {
     setList(initialList);
+  };
+
+  const handleTiebreakerChange = (e) => {
+    const { name, value } = e.target;
+    setTiebreakerError(null);
+    if (name === "minutes" || name === "seconds") {
+      if (value > 59) {
+        setTiebreakerError(`${name} must be between 1 and 59`);
+      }
+    }
+    setTiebreaker({ ...tiebreaker, [name]: value });
   };
 
   return (
@@ -48,6 +63,61 @@ const predict = ({ drivers, race }) => {
       </div>
       <div className="w-full">
         <DraggableTable list={list} setList={setList} />
+      </div>
+      <div className="flex items-start flex-col bg-black lg:w-6/12 p-3 my-10">
+        <h2>Tiebreaker: Winner Total Race Time</h2>
+
+        <div className="flex items-center w-full">
+          <input
+            type="number"
+            name="hours"
+            id="hours"
+            maxLength="2"
+            placeholder="00"
+            value={tiebreaker.hours}
+            className="w-3/12 text-center"
+            onChange={handleTiebreakerChange}
+          />
+
+          <span>:</span>
+          <input
+            type="number"
+            name="minutes"
+            id="minutes"
+            maxLength="2"
+            max="59"
+            placeholder="00"
+            value={tiebreaker.minutes}
+            className="w-3/12 text-center"
+            onChange={handleTiebreakerChange}
+          />
+          <span>:</span>
+          <input
+            type="number"
+            name="seconds"
+            id="seconds"
+            maxLength="2"
+            max="59"
+            placeholder="00"
+            value={tiebreaker.seconds}
+            className="w-3/12 text-center"
+            onChange={handleTiebreakerChange}
+          />
+          <span>.</span>
+          <input
+            type="number"
+            name="fractions"
+            id="fractions"
+            maxLength="3"
+            placeholder="000"
+            value={tiebreaker.fractions}
+            className="w-3/12 text-center"
+            onChange={handleTiebreakerChange}
+          />
+        </div>
+        <div className="w-full text-red-500">
+          {tiebreakerError && tiebreakerError}
+        </div>
       </div>
     </div>
   );

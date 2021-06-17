@@ -57,7 +57,17 @@ html {
 
   input[type="text"],
   input[type="email"],
+  input[type="number"],
   input[type="password"] {
-    @apply text-black;
+    @apply bg-transparent text-white border-0 border-b-2;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
