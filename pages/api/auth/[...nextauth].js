@@ -57,6 +57,8 @@ export default NextAuth({
       return baseUrl;
     },
     async session(session, user) {
+      console.log("user", user);
+      session.user.id = user.sub;
       return session;
     },
     async jwt(token, user, account, profile, isNewUser) {

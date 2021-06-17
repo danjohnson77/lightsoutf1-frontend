@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const DraggableTable = ({ data }) => {
-  const [list, setList] = useState(data);
-
+const DraggableTable = ({ list = [], setList }) => {
   const isEven = (value) => {
     if (value % 2 == 0) return true;
     else return false;
@@ -16,7 +14,7 @@ const DraggableTable = ({ data }) => {
     items.splice(result.destination.index, 0, reorderedItem);
 
     setList(items);
-    console.log(list);
+    console.log("new list", list);
   };
 
   return (
