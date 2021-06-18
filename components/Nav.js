@@ -69,7 +69,7 @@ const Nav = () => {
               } transition-opacity duration-500 ease-in-out`}
             >
               <h1 className={`lg:visible`}>LightsOutF1</h1>
-              <ul className="nav-list">
+              <ul className="nav-list flex-grow justify-center">
                 <li className="lg:mr-10" onClick={handleClick}>
                   <Link href="/">Home</Link>
                 </li>
@@ -80,7 +80,7 @@ const Nav = () => {
 
                 <li onClick={handleClick}>News</li>
               </ul>
-              <ul className="nav-list">
+              <ul className="nav-list flex-shrink ">
                 {session ? (
                   <>
                     <li>

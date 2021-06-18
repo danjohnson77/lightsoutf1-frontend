@@ -3,9 +3,8 @@ import { useSession, getSession } from "next-auth/client";
 import axios from "axios";
 import DraggableTable from "../components/DraggableTable";
 import Tiebreaker from "../components/Tiebreaker";
-import dayjs from "dayjs";
 
-const predict = ({ drivers, race, tiebreaker }) => {
+const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
   const [session, loading] = useSession();
 
   const [initialList, setInitialList] = useState(drivers);
@@ -59,18 +58,24 @@ const predict = ({ drivers, race, tiebreaker }) => {
         <p>Points: 302</p>
         <p>Rank: 2031</p>
       </div>
-      <div className="flex justify-between w-6/12 mx-auto pt-5">
-        {session ? (
-          <>
+
+      {session ? (
+        <div className="flex flex-col">
+          <div className="flex py-5">
             <button onClick={handleSave}>Save</button>
             <button onClick={handleReset} className="bg-red-700">
               Reset
             </button>
-          </>
-        ) : (
-          <p>Log in!</p>
-        )}
-      </div>
+          </div>
+          <div className="flex flex-col w-full">
+            <p>Last Updated:</p>
+            <p>{lastUpdated}</p>
+          </div>
+        </div>
+      ) : (
+        <p>Log in!</p>
+      )}
+
       <div className="w-full">
         <DraggableTable list={list} setList={setList} />
       </div>
@@ -88,8 +93,11 @@ export default predict;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
+
   let drivers = [];
   let tiebreaker = {};
+  let lastUpdated = "";
+
   const raceReq = await axios.get("http://localhost:3000/api/getRace");
 
   const race = raceReq.data;
@@ -101,6 +109,7 @@ export async function getServerSideProps(context) {
     if (currentPrediction.list) {
       drivers = currentPrediction.list;
       tiebreaker = currentPrediction.tiebreaker;
+      lastUpdated = currentPrediction.lastUpdated;
     } else {
       const driversReq = await axios.get(
         "http://localhost:3000/api/getDrivers"
@@ -114,6 +123,6 @@ export async function getServerSideProps(context) {
     drivers = driversReq.data;
   }
   return {
-    props: { drivers, race, tiebreaker },
+    props: { drivers, race, tiebreaker, lastUpdated },
   };
 }
