@@ -79,7 +79,9 @@ const Standings = () => {
             </select>
           </div>
           {loading ? (
-            <Loading />
+            <div className="h-96">
+              <Loading type="load-light" />
+            </div>
           ) : (
             <table className="font-secondary table-fixed text-center text-sm flex-grow alt-list opacity-0 standings-list">
               <thead>

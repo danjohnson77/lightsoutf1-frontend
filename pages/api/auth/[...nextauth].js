@@ -57,11 +57,22 @@ export default NextAuth({
       return baseUrl;
     },
     async session(session, user) {
-      console.log("user", user);
+      session.user = user;
       session.user.id = user.sub;
+
       return session;
     },
     async jwt(token, user, account, profile, isNewUser) {
+      try {
+        const predictions = await axios.post(
+          "http://localhost:5000/predict/user",
+          { id: token.id }
+        );
+
+        token && (token.currentPrediction = predictions.data);
+      } catch (error) {
+        console.log("jwt error", error.response.data);
+      }
       return token;
     },
   },

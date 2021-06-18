@@ -7,7 +7,6 @@ export default async function getDriversAPI(req, res) {
     const result = await axios.get(
       `http://ergast.com/api/f1/${currentYear}/driverStandings.json`
     );
-    //console.log(drivers.data.MRData);
 
     let drivers = [];
 

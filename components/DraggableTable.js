@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const DraggableTable = ({ list = [], setList }) => {

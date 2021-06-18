@@ -1,3 +1,4 @@
+import axios from "axios";
 import Countdown from "../components/Countdown";
 import News from "../components/News";
 import Standings from "../components/Standings";
@@ -7,10 +8,9 @@ import UserPredict from "../components/UserPredict";
 export default function Home({ countdown, news }) {
   return (
     <>
-      <div className="my-5">
-        <Countdown race={countdown} />
-      </div>
-      <div className="flex flex-col justify-center lg:grid lg:grid-cols-6 lg:grid-rows-2 lg:gap-4">
+      <Countdown race={countdown} />
+
+      <div className="flex flex-col justify-center lg:grid lg:grid-cols-6 lg:grid-rows-2 lg:gap-4 mt-10">
         <div className="lg:col-span-4 pt-10 lg:pt-0 lg:row-span-2">
           <News data={news} />
         </div>
@@ -31,12 +31,14 @@ export default function Home({ countdown, news }) {
 }
 
 export async function getServerSideProps(context) {
-  const countdownRes = await fetch(`http://localhost:3000/api/countdown`);
-  const countdown = await countdownRes.json();
+  const countdownRes = axios.get(`http://localhost:3000/api/countdown`);
 
-  const newsRes = await fetch(`http://localhost:3000/api/news`);
+  const newsRes = axios.get(`http://localhost:3000/api/news`);
 
-  const news = await newsRes.json();
+  const allRes = await axios.all([countdownRes, newsRes]);
+
+  const countdown = allRes[0].data;
+  const news = allRes[1].data;
 
   if (!countdown) {
     return {
