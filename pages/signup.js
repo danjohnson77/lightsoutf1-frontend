@@ -22,6 +22,7 @@ const signup = () => {
 
       result.data.user && sendEmail(result.data.user);
     } catch (error) {
+      console.log(error);
       setError(error.response.data ? error.response.data : error);
     }
   };
