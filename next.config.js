@@ -6,5 +6,6 @@ module.exports = {
     API_URL: "https://morning-peak-00042.herokuapp.com",
     MONGO_URI:
       "mongodb+srv://lof1db:FZmqm5yd3jz4aamk@lof1.lj2wl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    VERCEL_URL: "lightsoutf1-frontend.vercel.app",
   },
 };
