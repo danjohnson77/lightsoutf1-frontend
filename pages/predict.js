@@ -107,7 +107,9 @@ export async function getServerSideProps(context) {
   let tiebreaker = {};
   let lastUpdated = "";
 
-  const raceReq = await axios.get(`${process.env.VERCEL_URL}/api/getRace`);
+  const raceReq = await axios.get(
+    `https://${process.env.VERCEL_URL}/api/getRace`
+  );
 
   const race = raceReq.data || {
     id: "1900r1",
