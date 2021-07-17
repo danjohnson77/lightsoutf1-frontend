@@ -31,16 +31,19 @@ const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
       return "Please log in";
     }
 
-    const saved = await axios.post(`${process.env.VERCEL_URL}/api/predict`, {
-      user: session.user,
-      raceId: id,
-      raceName,
-      list: list.map((l) => {
-        const { id, name, team, teamId } = l;
-        return { id, name, team, teamId };
-      }),
-      tiebreaker: tiebreakerState,
-    });
+    const saved = await axios.post(
+      `https://${process.env.VERCEL_URL}/api/predict`,
+      {
+        user: session.user,
+        raceId: id,
+        raceName,
+        list: list.map((l) => {
+          const { id, name, team, teamId } = l;
+          return { id, name, team, teamId };
+        }),
+        tiebreaker: tiebreakerState,
+      }
+    );
 
     await getSession();
 
@@ -124,7 +127,7 @@ export async function getServerSideProps(context) {
       lastUpdated = currentPrediction.lastUpdated;
     } else {
       const driversReq = await axios.get(
-        `${process.env.VERCEL_URL}/api/getDrivers
+        `https://${process.env.VERCEL_URL}/api/getDrivers
     `
       );
 
@@ -132,7 +135,7 @@ export async function getServerSideProps(context) {
     }
   } else {
     const driversReq = await axios.get(
-      `${process.env.VERCEL_URL}/api/getDrivers`
+      `https://${process.env.VERCEL_URL}/api/getDrivers`
     );
 
     drivers = driversReq.data;
