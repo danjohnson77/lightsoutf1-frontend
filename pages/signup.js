@@ -12,7 +12,7 @@ const signup = () => {
     const { name, email, password } = data;
     try {
       const result = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        `${process.env.VERCEL_URL}/api/auth/register`,
         {
           name,
           email,
@@ -28,7 +28,7 @@ const signup = () => {
 
   const sendEmail = async ({ email, verifyToken, id }) => {
     try {
-      const emailRes = await axios.post("http://localhost:3000/api/email", {
+      const emailRes = await axios.post(`${process.env.VERCEL_URL}/api/email`, {
         email,
         verifyToken,
         id,
