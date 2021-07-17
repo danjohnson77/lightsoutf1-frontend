@@ -10,8 +10,8 @@ const Standings = () => {
   useEffect(async () => {
     try {
       setLoading(true);
-      const standingsRes =
-        await fetch(`https://${process.env.VERCEL_URL}/api/standings?season=${state.season}&type=${state.type}
+      const standingsRes = await fetch(`https://lightsoutf1-frontend.vercel.app
+        /api/standings?season=${state.season}&type=${state.type}
       `);
 
       const standings = await standingsRes.json();
