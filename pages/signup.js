@@ -30,7 +30,7 @@ const signup = () => {
   const sendEmail = async ({ email, verifyToken, id }) => {
     try {
       const emailRes = await axios.post(
-        `https://${process.env.VERCEL_URL}/api/email`,
+        `https://lightsoutf1-frontend.vercel.app/api/email`,
         {
           email,
           verifyToken,
