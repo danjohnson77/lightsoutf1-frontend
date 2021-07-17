@@ -46,7 +46,7 @@ const signup = () => {
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="mb-5">Sign Up</h1>
       <section className="w-8/12 mx-auto">
-        {error && <div className="bg-red-500 p-2 text-center">{error}</div>}
+        {/* {error && <div className="bg-red-500 p-2 text-center">{error}</div>} */}
         <form
           className="flex flex-col justify-center w-full"
           onSubmit={handleSubmit(onSubmit)}
