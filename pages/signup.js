@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../components/Input";
 
-const signup = ({ apiURL }) => {
+const signup = () => {
   const { register, handleSubmit, getValues, formState } = useForm();
 
   const [error, setError] = useState(null);
@@ -11,11 +11,14 @@ const signup = ({ apiURL }) => {
   const onSubmit = async (data) => {
     const { name, email, password } = data;
     try {
-      const result = await axios.post(`https://${apiURL}/api/auth/register`, {
-        name,
-        email,
-        password,
-      });
+      const result = await axios.post(
+        `https://lightsoutf1-frontend.vercel.app/api/auth/register`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       result.data.user && sendEmail(result.data.user);
     } catch (error) {
@@ -103,11 +106,3 @@ const signup = ({ apiURL }) => {
 };
 
 export default signup;
-
-export async function getServerSideProps(context) {
-  const apiURL = process.env.VERCEL_URL;
-
-  return {
-    props: { apiURL },
-  };
-}
