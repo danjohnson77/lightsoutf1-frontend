@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function registerAPI(req, res) {
   try {
-    const result = await axios.post("http://localhost:5000/auth/register", {
+    const result = await axios.post(`${process.env.API_URL}/auth/register`, {
       ...req.body,
     });
 

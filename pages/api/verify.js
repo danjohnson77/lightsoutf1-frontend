@@ -4,7 +4,7 @@ export default async function verifyAPI(req, res) {
   const { token, id } = req.body;
 
   try {
-    const result = await axios.post("http://localhost:5000/auth/verify", {
+    const result = await axios.post(`${process.env.API_URL}/auth/verify`, {
       token,
       id,
     });

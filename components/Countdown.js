@@ -1,4 +1,3 @@
-import React from "react";
 import CountdownClock from "./CountdownClock";
 
 const Countdown = ({ race }) => {

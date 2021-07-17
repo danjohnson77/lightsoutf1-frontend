@@ -30,7 +30,7 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         try {
-          const res = await axios.post("http://localhost:5000/auth/login", {
+          const res = await axios.post(`${process.env.API_URL}/auth/login`, {
             name: credentials.name,
             password: credentials.password,
           });
@@ -65,7 +65,7 @@ export default NextAuth({
     async jwt(token, user, account, profile, isNewUser) {
       try {
         const predictions = await axios.post(
-          "http://localhost:5000/predict/user",
+          `${process.env.API_URL}/predict/user`,
           { id: token.id }
         );
 
@@ -78,8 +78,7 @@ export default NextAuth({
   },
 
   // A database is optional, but required to persist accounts in a database
-  database:
-    "mongodb+srv://lof1db:FZmqm5yd3jz4aamk@lof1.lj2wl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  database: process.env.MONGO_URI,
 
   jwt: {},
   pages: {

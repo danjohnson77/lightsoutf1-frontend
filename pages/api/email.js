@@ -6,7 +6,7 @@ export default async function emailAPI(req, res) {
 
     console.log("next api body", req.body);
 
-    const emailRes = await axios.post("http://localhost:5000/auth/email", {
+    const emailRes = await axios.post(`${process.env.API_URL}/auth/email`, {
       email,
       verifyToken,
       id,

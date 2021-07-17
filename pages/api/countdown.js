@@ -2,9 +2,10 @@ import axios from "axios";
 
 export default async function countdownAPI(req, res) {
   try {
-    const race = await axios.get("http://localhost:5000/predict/");
+    const race = await axios.get(`${process.env.API_URL}/predict/`);
 
     const { nextRace } = race.data[1];
+
     const { date } = nextRace;
 
     const now = Date.now();
@@ -14,5 +15,6 @@ export default async function countdownAPI(req, res) {
     res.status(200).json({ nextRace, timeTillRace });
   } catch (error) {
     console.log(error);
+    res.status(400).json(error);
   }
 }
