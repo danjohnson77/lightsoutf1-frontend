@@ -42,13 +42,10 @@ const verify = ({ isVerified }) => {
 export default verify;
 
 export async function getServerSideProps(context) {
-  const result = await axios.post(
-    `https://${process.env.VERCEL_URL}/api/verify`,
-    {
-      token: context.query.token,
-      id: context.query.id,
-    }
-  );
+  const result = await axios.post(`${process.env.VERCEL_URL}/api/verify`, {
+    token: context.query.token,
+    id: context.query.id,
+  });
 
   return {
     props: {

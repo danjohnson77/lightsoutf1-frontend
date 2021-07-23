@@ -64,14 +64,18 @@ export default NextAuth({
     },
     async jwt(token, user, account, profile, isNewUser) {
       try {
-        const predictions = await axios.post(
-          `${process.env.API_URL}/predict/user`,
-          { id: token.id }
+        const currentUser = await axios.post(
+          `${process.env.VERCEL_URL}/api/getUser`,
+          { id: token.sub }
         );
 
-        token && (token.currentPrediction = predictions.data);
+        token.points = currentUser.data.user.points;
+
+        token.currentPrediction = currentUser.data.user.currentPrediction;
+
+        return token;
       } catch (error) {
-        console.log("jwt error", error.response.data);
+        console.log(error);
       }
       return token;
     },

@@ -31,11 +31,9 @@ export default function Home({ countdown, news }) {
 }
 
 export async function getServerSideProps(context) {
-  const countdownRes = axios.get(
-    `https://${process.env.VERCEL_URL}/api/countdown`
-  );
+  const countdownRes = axios.get(`${process.env.VERCEL_URL}/api/countdown`);
 
-  const newsRes = axios.get(`https://${process.env.VERCEL_URL}/api/news`);
+  const newsRes = axios.get(`${process.env.VERCEL_URL}/api/news`);
 
   const allRes = await axios.all([countdownRes, newsRes]);
 
@@ -49,6 +47,6 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { news, countdown },
+    props: { countdown, news },
   };
 }

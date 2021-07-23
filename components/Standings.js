@@ -11,7 +11,7 @@ const Standings = () => {
     try {
       setLoading(true);
       const standingsRes =
-        await fetch(`https://lightsoutf1-frontend.vercel.app/api/standings?season=${state.season}&type=${state.type}
+        await fetch(`${process.env.VERCEL_URL}/api/standings?season=${state.season}&type=${state.type}
       `);
 
       const standings = await standingsRes.json();
@@ -24,6 +24,8 @@ const Standings = () => {
     } catch (error) {
       console.log(error);
     }
+
+    return () => {};
   }, [state]);
 
   const handleChange = (e) => {

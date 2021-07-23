@@ -1,11 +1,6 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const DraggableTable = ({ list = [], setList }) => {
-  const isEven = (value) => {
-    if (value % 2 == 0) return true;
-    else return false;
-  };
-
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
     const items = Array.from(list);
@@ -13,7 +8,6 @@ const DraggableTable = ({ list = [], setList }) => {
     items.splice(result.destination.index, 0, reorderedItem);
 
     setList(items);
-    console.log("new list", list);
   };
 
   return (

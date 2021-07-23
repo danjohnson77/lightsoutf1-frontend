@@ -4,7 +4,7 @@ export default async function countdownAPI(req, res) {
   try {
     const race = await axios.get(`${process.env.API_URL}/predict/`);
 
-    const { nextRace } = race.data[1];
+    const { nextRace } = race.data[0];
 
     const { date } = nextRace;
 
