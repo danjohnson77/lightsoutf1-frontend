@@ -10,7 +10,7 @@ export default async function countdownAPI(req, res) {
 
     const now = Date.now();
 
-    const timeTillRace = date - now;
+    const timeTillRace = Date.parse(date) - now;
 
     res.status(200).json({ nextRace, timeTillRace });
   } catch (error) {
