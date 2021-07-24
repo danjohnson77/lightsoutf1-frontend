@@ -38,7 +38,7 @@ const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
       return "Please log in";
     }
 
-    const saved = await axios.post(`${process.env.VERCEL_URL}/api/predict`, {
+    const saved = await axios.post(`${process.env.BASE_URL}/api/predict`, {
       user: session.user,
       raceId: id,
       raceName,
@@ -155,7 +155,7 @@ export async function getServerSideProps(context) {
   let tiebreaker = {};
   let lastUpdated = "";
 
-  const raceReq = await axios.get(`${process.env.VERCEL_URL}/api/getRace`);
+  const raceReq = await axios.get(`${process.env.BASE_URL}/api/getRace`);
 
   const race = raceReq.data || {
     id: "1900r1",
@@ -173,7 +173,7 @@ export async function getServerSideProps(context) {
       lastUpdated = currentPrediction.lastUpdated;
     } else {
       const driversReq = await axios.get(
-        `${process.env.VERCEL_URL}/api/getDrivers
+        `${process.env.BASE_URL}/api/getDrivers
     `
       );
 
@@ -181,7 +181,7 @@ export async function getServerSideProps(context) {
     }
   } else {
     const driversReq = await axios.get(
-      `${process.env.VERCEL_URL}/api/getDrivers`
+      `${process.env.BASE_URL}/api/getDrivers`
     );
 
     drivers = driversReq.data;

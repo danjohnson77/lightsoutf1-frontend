@@ -65,7 +65,7 @@ export default NextAuth({
     async jwt(token, user, account, profile, isNewUser) {
       try {
         const currentUser = await axios.post(
-          `${process.env.VERCEL_URL}/api/getUser`,
+          `${process.env.BASE_URL}/api/getUser`,
           { id: token.sub }
         );
 

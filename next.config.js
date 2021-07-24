@@ -6,6 +6,6 @@ module.exports = {
     API_URL: "http://localhost:5000",
     MONGO_URI:
       "mongodb+srv://lof1db:FZmqm5yd3jz4aamk@lof1.lj2wl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    VERCEL_URL: "http://localhost:3000",
+    BASE_URL: "http://localhost:3000",
   },
 };

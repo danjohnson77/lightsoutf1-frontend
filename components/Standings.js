@@ -11,7 +11,7 @@ const Standings = () => {
     try {
       setLoading(true);
       const standingsRes =
-        await fetch(`${process.env.VERCEL_URL}/api/standings?season=${state.season}&type=${state.type}
+        await fetch(`${process.env.BASE_URL}/api/standings?season=${state.season}&type=${state.type}
       `);
 
       const standings = await standingsRes.json();
