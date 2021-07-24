@@ -7,7 +7,7 @@ const login = ({ csrfToken }) => {
       <section>
         <form
           method="post"
-          action={`${process.env.BASE_URL}/api/auth/callback/credentials`}
+          action="/api/auth/callback/credentials"
           className="flex flex-col justify-center w-full items-center"
         >
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />

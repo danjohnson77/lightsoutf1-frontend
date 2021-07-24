@@ -51,7 +51,7 @@ export default NextAuth({
 
   callbacks: {
     async signIn(user, account, profile) {
-      // console.log("signIn CB", user, account, profile);
+      //console.log("signIn CB", user, account, profile);
       return true;
     },
     async redirect(url, baseUrl) {
