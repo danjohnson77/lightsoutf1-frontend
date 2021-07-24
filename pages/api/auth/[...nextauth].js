@@ -29,10 +29,11 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        const { name, password } = credentials;
         try {
           const res = await axios.post(`${process.env.API_URL}/auth/login`, {
-            name: credentials.name,
-            password: credentials.password,
+            name,
+            password,
           });
 
           if (res.data.success && res.data.user) {

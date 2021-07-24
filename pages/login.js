@@ -1,11 +1,6 @@
 import { getCsrfToken } from "next-auth/client";
 
 const login = ({ csrfToken }) => {
-  const handleLogin = async () => {
-    const login = await signIn();
-    login && redirect("/");
-  };
-
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="mb-5">Sign In</h1>
@@ -35,7 +30,6 @@ const login = ({ csrfToken }) => {
 
 export default login;
 
-// This is the recommended way for Next.js 9.3 or newer
 export async function getServerSideProps(context) {
   return {
     props: {
