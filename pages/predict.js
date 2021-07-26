@@ -38,7 +38,7 @@ const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
       return "Please log in";
     }
 
-    const saved = await axios.post(`${process.env.BASE_URL}/api/predict`, {
+    const saved = await axios.post(`/api/predict`, {
       user: session.user,
       raceId: id,
       raceName,
