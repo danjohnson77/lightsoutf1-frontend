@@ -7,6 +7,6 @@ export default async function predictAPI(req, res) {
     });
     res.status(200).json(result.data);
   } catch (error) {
-    res.send(error?.data?.error || "Next API error");
+    res.send(error || "Next API error");
   }
 }
