@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
+import axios from "axios";
 import gsap from "gsap";
 
 const Standings = () => {
@@ -11,10 +12,10 @@ const Standings = () => {
     try {
       setLoading(true);
       const standingsRes =
-        await fetch(`${process.env.BASE_URL}/api/standings?season=${state.season}&type=${state.type}
+        await axios.get(`/api/standings?season=${state.season}&type=${state.type}
       `);
 
-      const standings = await standingsRes.json();
+      const standings = standingsRes.data;
       !state && setState(standings);
 
       setStandingsTable(standings.standingsTable);
