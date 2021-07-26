@@ -20,20 +20,22 @@ const Modal = ({
           <button
             className="btn text-white"
             onClick={() => {
-              confirmFunction();
+              confirmFunction && confirmFunction();
               setOpenState(false);
             }}
           >
             {confirmText}
           </button>
-          <button
-            className="btn text-white bg-red-700"
-            onClick={() => {
-              setOpenState(false);
-            }}
-          >
-            {cancelText}
-          </button>
+          {cancelText && (
+            <button
+              className="btn text-white bg-red-700"
+              onClick={() => {
+                setOpenState(false);
+              }}
+            >
+              {cancelText}
+            </button>
+          )}
         </div>
       </dialog>
     </div>

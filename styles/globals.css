@@ -15,6 +15,10 @@ html {
   height: 200vw;
 }
 
+.alt-text {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
 @layer utilities {
   .nav-line {
     @apply w-full h-px bg-white transition-all duration-300;

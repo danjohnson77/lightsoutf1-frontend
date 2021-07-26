@@ -30,6 +30,7 @@ const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
 
   const [saveModalOpen, setSaveModalOpen] = useState(false);
   const [resetModalOpen, setResetModalOpen] = useState(false);
+  const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   const router = useRouter();
 
@@ -82,6 +83,13 @@ const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
             setOpenState={setResetModalOpen}
             confirmFunction={handleReset}
           />
+          <Modal
+            message="How To Play"
+            subMessage="Click and drag a driver's name to where you think he'll finish the next race. Click the Save button to save the prediction and come back after the race to see how you did!"
+            confirmText="OK"
+            openState={rulesModalOpen}
+            setOpenState={setRulesModalOpen}
+          />
           {session ? (
             <>
               <div className="flex flex-col">
@@ -116,6 +124,11 @@ const predict = ({ drivers, race, tiebreaker, lastUpdated }) => {
                   <p>Last Updated:</p>
                   <p>{lastUpdated || "No predictions saved yet"}</p>
                 </div>
+              </div>
+              <div className="my-5 underline w-full flex justify-center lg:justify-end">
+                <a onClick={setRulesModalOpen}>
+                  Click here to learn how to play
+                </a>
               </div>
               <div className="w-full">
                 <DraggableTable list={list} setList={setList} />

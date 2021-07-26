@@ -78,7 +78,10 @@ const Nav = () => {
                   <Link href="/predict">Predict</Link>
                 </li>
 
-                <li onClick={handleClick}>News</li>
+                <li onClick={handleClick}>
+                  {" "}
+                  <Link href="/about">About</Link>
+                </li>
               </ul>
               <ul className="nav-list flex-shrink ">
                 {session ? (

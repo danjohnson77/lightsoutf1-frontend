@@ -23,7 +23,7 @@ export default function Home({ countdown, news }) {
           <div className="mb-5">
             <UserPredict />
           </div>
-          <TopPredictors />
+          {/* <TopPredictors /> */}
         </div>
       </div>
     </>

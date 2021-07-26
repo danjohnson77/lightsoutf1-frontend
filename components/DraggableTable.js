@@ -24,7 +24,7 @@ const DraggableTable = ({ list = [], setList }) => {
                 <Draggable key={id} draggableId={id} index={index}>
                   {(provided, snapshot) => (
                     <li
-                      className={`text-center bg-black flex flex-col lg:flex-row w-full justify-around my-2 ${
+                      className={`alt-text text-center bg-black flex flex-col lg:flex-row w-full justify-around my-2 ${
                         snapshot.isDragging && "border border-white"
                       }`}
                       ref={provided.innerRef}
