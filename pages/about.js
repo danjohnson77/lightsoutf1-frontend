@@ -17,6 +17,7 @@ const about = () => {
             href="https://ergast.com/mrd"
             target="_blank"
             className="underline"
+            rel="noopener"
           >
             Ergast Motor Racing API.
           </a>{" "}
@@ -29,6 +30,7 @@ const about = () => {
             href="https://www.linkedin.com/in/danjohnson77"
             target="_blank"
             className="underline"
+            rel="noopener"
           >
             Daniel Johnson
           </a>
@@ -38,6 +40,7 @@ const about = () => {
         <a
           href="mailto:dfjdeveloper@gmail.com?subject=LightsOutF1 Inquiry"
           target="blank"
+          rel="noopener"
         >
           Contact The Developer
         </a>

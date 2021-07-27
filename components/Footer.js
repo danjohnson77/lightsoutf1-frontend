@@ -10,6 +10,7 @@ const Footer = () => {
             href="https://ergast.com/mrd"
             target="_blank"
             className="underline"
+            rel="noopener"
           >
             Ergast Motor Racing API.
           </a>
@@ -22,6 +23,7 @@ const Footer = () => {
             href="mailto:dfjdeveloper@gmail.com?subject=LightsOutF1 Inquiry"
             target="_blank"
             className="underline"
+            rel="noopener"
           >
             Contact the Developer
           </a>
