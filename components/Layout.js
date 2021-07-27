@@ -7,6 +7,11 @@ const Layout = ({ children }) => {
     <>
       <Head>
         <title>LightsOutF1 Racing</title>
+        <meta name="author" content="Daniel Johnson" />
+        <meta
+          name="description"
+          content="Formula One racing news from around the internet and a fun prediction game!"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
