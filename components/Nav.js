@@ -28,7 +28,7 @@ const Nav = () => {
           onClick={() => {
             setIsChecked(!isChecked);
           }}
-          ariaLabel="Open Navigation Menu"
+          aria-label="Open Navigation Menu"
         />
 
         {/* hamburger */}
