@@ -4,7 +4,7 @@ const News = ({ data }) => {
       <h1>LATEST NEWS</h1>
       <section className="w-full font-secondary ">
         <div className="p-5 flex flex-col bg-offBlack">
-          <a href={data[0].link} target="_blank">
+          <a href={data[0].link} target="_blank" rel="noopener">
             <h2 className="text-3xl mb-2">{data[0].title}</h2>
             <p>{data[0].description}</p>
 
@@ -26,7 +26,7 @@ const News = ({ data }) => {
               } else {
                 return (
                   <li className="flex flex-col" key={index}>
-                    <a href={item.link} target="_blank">
+                    <a href={item.link} target="_blank" rel="noopener">
                       {title}
                     </a>
                     <div className="flex flex-col text-xs mt-4 text-right">

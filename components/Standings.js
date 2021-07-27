@@ -114,13 +114,13 @@ const Standings = () => {
                         <tr key={index}>
                           <td>{position}</td>
                           <td>
-                            <a href={driverUrl} target="_blank">
+                            <a href={driverUrl} target="_blank" rel="noopener">
                               {name}
                             </a>
                           </td>
                           <td>
                             {state.type === "Driver" ? (
-                              <a href={teamUrl} target="_blank">
+                              <a href={teamUrl} target="_blank" rel="noopener">
                                 {teamName}
                               </a>
                             ) : (
